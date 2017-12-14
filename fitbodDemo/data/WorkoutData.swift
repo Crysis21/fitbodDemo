@@ -12,7 +12,7 @@ public class WorkoutData {
     var id: Int
     var date: Date
     var name: String
-    var enties = [WorkoutSet]()
+    var entries = [WorkoutSet]()
     
     init(id: Int, date: Date, name: String) {
         self.id = id
@@ -21,20 +21,20 @@ public class WorkoutData {
     }
     
     func addWorkout(data: WorkoutSet) {
-        self.enties.append(data)
+        self.entries.append(data)
     }
     
     var averageOneMaxRep: Double? {
         get {
-            return enties.reduce(0.0, {result, data in
+            return entries.reduce(0.0, {result, data in
                 return result + data.oneMaxRep!
-            }) / Double(enties.count)
+            }) / Double(entries.count)
         }
     }
     
     var debugDescription: String {
         get {
-            return "\(date) \(name) entries=\(enties.count)"
+            return "\(date) \(name) entries=\(entries.count)"
         }
     }
 }

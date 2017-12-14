@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285753531FE2CC53009D9EDB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285753521FE2CC53009D9EDB /* Subject.swift */; };
+		285753551FE2CDA0009D9EDB /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285753541FE2CDA0009D9EDB /* Observer.swift */; };
+		285753571FE32362009D9EDB /* workoutData2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 285753561FE32362009D9EDB /* workoutData2.txt */; };
 		289DC40C1FE1DC870060F3BF /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289DC40B1FE1DC870060F3BF /* ChartViewController.swift */; };
 		28ACCCA01FE1C0AF008581E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCC9F1FE1C0AF008581E9 /* AppDelegate.swift */; };
 		28ACCCA51FE1C0AF008581E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28ACCCA31FE1C0AF008581E9 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		285753521FE2CC53009D9EDB /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		285753541FE2CDA0009D9EDB /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		285753561FE32362009D9EDB /* workoutData2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = workoutData2.txt; sourceTree = "<group>"; };
 		289DC40B1FE1DC870060F3BF /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		28ACCC9C1FE1C0AF008581E9 /* fitbodDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitbodDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28ACCC9F1FE1C0AF008581E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		285753511FE2CC1A009D9EDB /* observer */ = {
+			isa = PBXGroup;
+			children = (
+				285753521FE2CC53009D9EDB /* Subject.swift */,
+				285753541FE2CDA0009D9EDB /* Observer.swift */,
+			);
+			path = observer;
+			sourceTree = "<group>";
+		};
 		28ACCC931FE1C0AF008581E9 = {
 			isa = PBXGroup;
 			children = (
@@ -103,12 +118,14 @@
 		28ACCC9E1FE1C0AF008581E9 /* fitbodDemo */ = {
 			isa = PBXGroup;
 			children = (
+				285753511FE2CC1A009D9EDB /* observer */,
 				28ACCCC61FE1C233008581E9 /* ui */,
 				28ACCCBF1FE1C0CB008581E9 /* data */,
 				28ACCC9F1FE1C0AF008581E9 /* AppDelegate.swift */,
 				28ACCCA31FE1C0AF008581E9 /* Main.storyboard */,
 				28ACCCA61FE1C0AF008581E9 /* Assets.xcassets */,
 				28ACCCA81FE1C0AF008581E9 /* LaunchScreen.storyboard */,
+				285753561FE32362009D9EDB /* workoutData2.txt */,
 				28ACCCD41FE1C9F3008581E9 /* workoutData.txt */,
 				28ACCCAB1FE1C0AF008581E9 /* Info.plist */,
 				28ACCCCA1FE1C64D008581E9 /* DataManager.swift */,
@@ -256,6 +273,7 @@
 			files = (
 				28ACCCAA1FE1C0AF008581E9 /* LaunchScreen.storyboard in Resources */,
 				28ACCCA71FE1C0AF008581E9 /* Assets.xcassets in Resources */,
+				285753571FE32362009D9EDB /* workoutData2.txt in Resources */,
 				28ACCCD51FE1C9F3008581E9 /* workoutData.txt in Resources */,
 				28ACCCA51FE1C0AF008581E9 /* Main.storyboard in Resources */,
 			);
@@ -380,12 +398,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				28ACCCC51FE1C1E7008581E9 /* WorkoutSet.swift in Sources */,
+				285753551FE2CDA0009D9EDB /* Observer.swift in Sources */,
 				28ACCCD21FE1C8E6008581E9 /* WorkoutCell.swift in Sources */,
 				28ACCCCF1FE1C6DB008581E9 /* WorkoutsViewController.swift in Sources */,
 				28ACCCCB1FE1C64D008581E9 /* DataManager.swift in Sources */,
 				28ACCCC31FE1C1DE008581E9 /* WorkoutData.swift in Sources */,
 				289DC40C1FE1DC870060F3BF /* ChartViewController.swift in Sources */,
 				28ACCCA01FE1C0AF008581E9 /* AppDelegate.swift in Sources */,
+				285753531FE2CC53009D9EDB /* Subject.swift in Sources */,
 				28ACCCC11FE1C1CA008581E9 /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

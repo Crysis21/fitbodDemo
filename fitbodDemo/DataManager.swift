@@ -9,28 +9,35 @@
 import Foundation
 
 class DataManager {
+    
     static let sharedInstance: DataManager = DataManager()
     
-    public var workouts = [Workout]()
+    private var workouts: [Workout]?
+    private var workoutsSubject: Subject<[Workout]>
     private var workoutHistory = [WorkoutData]()
     private var dateFormatter = DateFormatter()
     
     private init() {
         dateFormatter.dateFormat = "MMM d yyyy"
+        workoutsSubject = Subject()
     }
     
-    public func loadWorkouts(onLoad:@escaping (([Workout])->Void)) {
+    public func loadWorkouts(consumer: @escaping ([Workout]) -> Void) -> Disposable<[Workout]> {
+        return workoutsSubject.subscribe(consumer)
+    }
+    
+    public func loadWorkoutData(file: String) {
         DispatchQueue.global().async {
-            self.loadWorkoutData(onLoadComplete: {
-                DispatchQueue.main.async(execute: {
-                    onLoad(self.workouts)
-                })
-            })
+            let name = file.contains(".") ? String(file.split(separator: ".").first!) : file
+            let type = file.contains(".") ? String(file.split(separator: ".").last!) : ""
+            self.loadWorkoutDataFromFile(fileName: name, fileType: type)
         }
     }
     
-    public func loadWorkoutData(onLoadComplete: () -> Void) {
-        if let path = Bundle.main.path(forResource: "workoutData", ofType: "txt") {
+    private func loadWorkoutDataFromFile(fileName: String, fileType: String) {
+        self.workouts = nil
+        self.workoutHistory.removeAll()
+        if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
             let fileManager = FileManager()
             if fileManager.fileExists(atPath: path) {
                 do {
@@ -55,9 +62,9 @@ class DataManager {
                     }).map({(key, value) in
                         return Workout(name: key, data: value)
                     })
+                    workoutsSubject.publish(newValue: workouts!)
+                    print("created \(workouts?.count ?? 0) workouts")
                     
-                    print("created \(workouts.count) workouts")
-                    onLoadComplete()
                 } catch  {
                     
                 }
@@ -65,7 +72,6 @@ class DataManager {
                 print("WorkoutData asset missing")
             }
         }
-        
     }
     
     fileprivate func parseWorkoutSet(textData: String) -> WorkoutSet? {

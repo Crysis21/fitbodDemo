@@ -113,7 +113,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="poV-S4-gOa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VaH-3o-yeT"/>
+                    <navigationItem key="navigationItem" id="VaH-3o-yeT">
+                        <barButtonItem key="rightBarButtonItem" title="Change Data" id="qPX-CP-yG5">
+                            <connections>
+                                <action selector="loadNewSet:" destination="HA5-sO-dbU" id="z9I-mI-p9H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="0Cn-Kz-7iP" id="uvE-c7-ov9"/>
                         <outlet property="tableView" destination="X2f-Ge-6no" id="R3m-xT-lK0"/>

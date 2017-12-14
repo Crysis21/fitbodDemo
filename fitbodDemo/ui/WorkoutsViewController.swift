@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var workouts: [Workout]?
+    var workoutsDisposable: Disposable<[Workout]>?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
@@ -21,16 +22,18 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         
         activityIndicator.startAnimating()
-        DataManager.sharedInstance.loadWorkouts { (workouts) in
+        workoutsDisposable = DataManager.sharedInstance.loadWorkouts(consumer: {workouts in
             self.workouts = workouts
-            self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
-        }
+            self.activityIndicator.stopAnimating()
+        })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    @IBAction func loadNewSet(_ sender: Any) {
+        DataManager.sharedInstance.loadWorkoutData(file: "workoutData2.txt")
     }
+    
+    //MARK: TableView data
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
