@@ -11,21 +11,12 @@ import UIKit
 class WorkoutCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var maxWeight: UILabel!
+    
     var workout: Workout? {
         didSet {
             self.name.text = workout?.name
+            self.maxWeight.text = "\(workout?.workoutOneRepMax ?? 0)"
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

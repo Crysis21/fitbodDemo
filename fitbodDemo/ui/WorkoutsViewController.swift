@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class WorkoutsTableViewController: UITableViewController {
+class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var workouts: [Workout]?
-    var loadingView: UIActivityIndicatorView?
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-        self.tableView.backgroundView = loadingView
-        loadingView?.startAnimating()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        activityIndicator.startAnimating()
         DataManager.sharedInstance.loadWorkouts { (workouts) in
             self.workouts = workouts
+            self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
-            self.loadingView?.stopAnimating()
         }
     }
 
@@ -27,16 +32,16 @@ class WorkoutsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts?.count ?? 0
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workout = workouts![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell", for: indexPath) as! WorkoutCell
         cell.workout = workout

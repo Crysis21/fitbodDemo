@@ -17,7 +17,7 @@
 		28ACCCC31FE1C1DE008581E9 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCC21FE1C1DE008581E9 /* WorkoutData.swift */; };
 		28ACCCC51FE1C1E7008581E9 /* WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCC41FE1C1E7008581E9 /* WorkoutSet.swift */; };
 		28ACCCCB1FE1C64D008581E9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCCA1FE1C64D008581E9 /* DataManager.swift */; };
-		28ACCCCF1FE1C6DB008581E9 /* WorkoutsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCCE1FE1C6DB008581E9 /* WorkoutsTableViewController.swift */; };
+		28ACCCCF1FE1C6DB008581E9 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCCE1FE1C6DB008581E9 /* WorkoutsViewController.swift */; };
 		28ACCCD21FE1C8E6008581E9 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACCCD01FE1C8E6008581E9 /* WorkoutCell.swift */; };
 		28ACCCD51FE1C9F3008581E9 /* workoutData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28ACCCD41FE1C9F3008581E9 /* workoutData.txt */; };
 		485F871AFD35DA2AE062550F /* Pods_fitbodDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE75DFB0F0F23142AFDC54C /* Pods_fitbodDemoTests.framework */; };
@@ -49,7 +49,7 @@
 		28ACCCC21FE1C1DE008581E9 /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		28ACCCC41FE1C1E7008581E9 /* WorkoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSet.swift; sourceTree = "<group>"; };
 		28ACCCCA1FE1C64D008581E9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		28ACCCCE1FE1C6DB008581E9 /* WorkoutsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTableViewController.swift; sourceTree = "<group>"; };
+		28ACCCCE1FE1C6DB008581E9 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		28ACCCD01FE1C8E6008581E9 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		28ACCCD41FE1C9F3008581E9 /* workoutData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = workoutData.txt; sourceTree = "<group>"; };
 		4BE75DFB0F0F23142AFDC54C /* Pods_fitbodDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitbodDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 		28ACCCC61FE1C233008581E9 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				28ACCCCE1FE1C6DB008581E9 /* WorkoutsTableViewController.swift */,
+				28ACCCCE1FE1C6DB008581E9 /* WorkoutsViewController.swift */,
 				28ACCCD01FE1C8E6008581E9 /* WorkoutCell.swift */,
 				289DC40B1FE1DC870060F3BF /* ChartViewController.swift */,
 			);
@@ -360,10 +360,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-fitbodDemo/Pods-fitbodDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -379,7 +381,7 @@
 			files = (
 				28ACCCC51FE1C1E7008581E9 /* WorkoutSet.swift in Sources */,
 				28ACCCD21FE1C8E6008581E9 /* WorkoutCell.swift in Sources */,
-				28ACCCCF1FE1C6DB008581E9 /* WorkoutsTableViewController.swift in Sources */,
+				28ACCCCF1FE1C6DB008581E9 /* WorkoutsViewController.swift in Sources */,
 				28ACCCCB1FE1C64D008581E9 /* DataManager.swift in Sources */,
 				28ACCCC31FE1C1DE008581E9 /* WorkoutData.swift in Sources */,
 				289DC40C1FE1DC870060F3BF /* ChartViewController.swift in Sources */,

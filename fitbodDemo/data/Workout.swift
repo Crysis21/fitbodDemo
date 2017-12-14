@@ -20,5 +20,11 @@ class Workout {
     init() {
         
     }
+    
+    var workoutOneRepMax: Int {
+        get {
+            return Int(data?.last?.averageOneMaxRep ?? 0)
+        }
+    }
 }
 

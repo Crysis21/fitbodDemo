@@ -16,8 +16,7 @@ class DataManager {
     private var dateFormatter = DateFormatter()
     
     private init() {
-        //load workout data from assets
-        dateFormatter.dateFormat = "MMM DD YYYY"
+        dateFormatter.dateFormat = "MMM d yyyy"
     }
     
     public func loadWorkouts(onLoad:@escaping (([Workout])->Void)) {
@@ -39,7 +38,6 @@ class DataManager {
                     var currentWorkout: WorkoutData?
                     lines.forEach({ line in
                         if let workoutSet = parseWorkoutSet(textData: String(line)) {
-                            print("workout PR = \(workoutSet.oneMaxRep ?? 0) setId=\(workoutSet.workoutId)")
                             if currentWorkout?.id == workoutSet.workoutId {
                                 currentWorkout?.addWorkout(data: workoutSet)
                             } else {
@@ -49,12 +47,8 @@ class DataManager {
                             }
                         }
                     })
-                    
-                    print("created \(workoutHistory.count) sets")
-                    
-                    workoutHistory.forEach({workout in
-                        print(workout.debugDescription)
-                    })
+                    print("created \(workoutHistory.count) workouts data")
+    
                     
                     workouts = Dictionary(grouping: workoutHistory, by: {(element: WorkoutData) in
                         return element.name

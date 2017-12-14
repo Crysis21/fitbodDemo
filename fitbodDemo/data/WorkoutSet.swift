@@ -30,5 +30,11 @@ class WorkoutSet {
             return Double(weight) / (1.0278 - 0.0278 * Double(reps))
         }
     }
+    
+    var debugDescription: String {
+        get {
+            return "\(date) \(name)"
+        }
+    }
 }
 
