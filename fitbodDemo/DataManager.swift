@@ -22,7 +22,7 @@ class DataManager {
         workoutsSubject = Subject()
     }
     
-    public func loadWorkouts(consumer: @escaping ([Workout]) -> Void, error: @escaping (Error)->Void) -> Disposable<[Workout]> {
+    public func loadWorkouts(consumer: @escaping ([Workout]?) -> Void, error: @escaping (Error)->Void) -> Disposable<[Workout]> {
         return workoutsSubject.subscribe(consumer, error)
     }
     

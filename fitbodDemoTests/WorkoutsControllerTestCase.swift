@@ -31,12 +31,13 @@ class WorkoutsControllerTestCase: XCTestCase {
         let _ = workoutController?.view
         XCTAssert(workoutController?.tableView != nil)
         let promise = expectation(description: "Workout Data Loaded")
+        DataManager.sharedInstance.loadWorkoutData(file: "workoutData.txt")
         DataManager.sharedInstance.loadWorkouts(consumer: {workouts in
             XCTAssert(self.workoutController?.workouts != nil)
             let cell = self.workoutController?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! WorkoutCell
-            XCTAssert(cell.name.text == workouts.first?.name)
+            XCTAssert(cell.name.text == workouts?.first?.name)
             promise.fulfill()
-        }, error: {error in
+        }, error: { er in
             
         })
         waitForExpectations(timeout: 5, handler: nil)

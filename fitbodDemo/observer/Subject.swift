@@ -17,7 +17,7 @@ class Subject<T> :NSObject{
         didSet {
             for observer in subscribtions {
                 DispatchQueue.main.async {
-                    observer.accept(self.observedValue!)
+                    observer.accept(self.observedValue)
                 }
             }
         }
@@ -39,7 +39,7 @@ class Subject<T> :NSObject{
         }
     }
     
-    func subscribe(_ consumer: @escaping (T) -> Void) -> Disposable<T> {
+    func subscribe(_ consumer: @escaping (T?) -> Void) -> Disposable<T> {
         let disposable = Disposable(subject: self, accept: consumer)
         subscribtions.append(disposable)
         if repeatLastValue, let value = observedValue {
@@ -50,7 +50,7 @@ class Subject<T> :NSObject{
         return disposable
     }
     
-    func subscribe(_ consumer: @escaping (T) -> Void, _ error: @escaping (Error) -> Void) -> Disposable<T> {
+    func subscribe(_ consumer: @escaping (T?) -> Void, _ error: @escaping (Error) -> Void) -> Disposable<T> {
         let disposable = Disposable(subject: self, accept: consumer, error: error)
         subscribtions.append(disposable)
         if repeatLastValue {

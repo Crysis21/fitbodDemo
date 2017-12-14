@@ -10,16 +10,16 @@ import Foundation
 
 class Disposable<T> :NSObject{
     var subject: Subject<T>
-    var accept: (T) -> Void
+    var accept: (T?) -> Void
     var error: (Error) -> Void
     
-    init(subject: Subject<T>, accept: @escaping (T) -> Void, error: @escaping (Error) -> Void) {
+    init(subject: Subject<T>, accept: @escaping (T?) -> Void, error: @escaping (Error) -> Void) {
         self.subject = subject
         self.accept = accept
         self.error = error
     }
     
-    init(subject: Subject<T>, accept: @escaping (T) -> Void) {
+    init(subject: Subject<T>, accept: @escaping (T?) -> Void) {
         self.subject = subject
         self.accept = accept
         self.error = { error in
