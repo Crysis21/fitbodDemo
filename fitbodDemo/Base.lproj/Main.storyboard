@@ -101,14 +101,23 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="pacman"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-MQ-mC6">
+                                <rect key="frame" x="30" y="573" width="315" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Cn-Kz-7iP" firstAttribute="centerY" secondItem="C4i-x1-hf8" secondAttribute="centerY" id="2tM-T8-ItV"/>
+                            <constraint firstItem="poV-S4-gOa" firstAttribute="bottom" secondItem="WaR-MQ-mC6" secondAttribute="bottom" constant="30" id="71g-nT-z22"/>
                             <constraint firstItem="X2f-Ge-6no" firstAttribute="top" secondItem="poV-S4-gOa" secondAttribute="top" id="BAg-6X-dn7"/>
                             <constraint firstItem="X2f-Ge-6no" firstAttribute="trailing" secondItem="poV-S4-gOa" secondAttribute="trailing" id="E6H-jf-kDB"/>
+                            <constraint firstItem="poV-S4-gOa" firstAttribute="trailing" secondItem="WaR-MQ-mC6" secondAttribute="trailing" constant="30" id="G2P-Wn-D0e"/>
                             <constraint firstAttribute="bottom" secondItem="X2f-Ge-6no" secondAttribute="bottom" id="KjS-D7-sX0"/>
                             <constraint firstItem="0Cn-Kz-7iP" firstAttribute="centerX" secondItem="C4i-x1-hf8" secondAttribute="centerX" id="TzF-9D-Cdp"/>
+                            <constraint firstItem="WaR-MQ-mC6" firstAttribute="leading" secondItem="poV-S4-gOa" secondAttribute="leading" constant="30" id="l1f-yV-dpi"/>
                             <constraint firstItem="X2f-Ge-6no" firstAttribute="leading" secondItem="poV-S4-gOa" secondAttribute="leading" id="x2e-cS-aBD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="poV-S4-gOa"/>
@@ -122,6 +131,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="0Cn-Kz-7iP" id="uvE-c7-ov9"/>
+                        <outlet property="errorLabel" destination="WaR-MQ-mC6" id="A5V-Sd-xct"/>
                         <outlet property="tableView" destination="X2f-Ge-6no" id="R3m-xT-lK0"/>
                     </connections>
                 </viewController>

@@ -18,15 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fitbod Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKr-SO-S0l">
-                                <rect key="frame" x="127" y="296" width="120" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fitbod_logo" translatesAutoresizingMaskIntoConstraints="NO" id="i4f-9d-Tna">
+                                <rect key="frame" x="107.5" y="308.5" width="160" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9DF-k4-9lB"/>
+                                    <constraint firstAttribute="width" constant="160" id="A6p-6c-SMs"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="assesment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBh-UX-DnS">
+                                <rect key="frame" x="152.5" y="366" width="70" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tBh-UX-DnS" firstAttribute="top" secondItem="i4f-9d-Tna" secondAttribute="bottom" constant="7.5" id="O9T-Dc-WP7"/>
+                            <constraint firstItem="tBh-UX-DnS" firstAttribute="centerX" secondItem="i4f-9d-Tna" secondAttribute="centerX" id="VWZ-wA-KqJ"/>
+                            <constraint firstItem="i4f-9d-Tna" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="frT-qf-nVE"/>
+                            <constraint firstItem="i4f-9d-Tna" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uCv-Da-e6X"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -35,4 +47,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fitbod_logo" width="105" height="32"/>
+    </resources>
 </document>

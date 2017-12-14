@@ -15,6 +15,7 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,12 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
             self.workouts = workouts
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
+            self.errorLabel.isHidden = true
+        }, error: {error in
+            self.workouts = nil
+            self.tableView.reloadData()
+            self.errorLabel.text = "Failed to load data"
+            self.errorLabel.isHidden=false
         })
     }
     
@@ -38,13 +45,13 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts?.count ?? 0
     }
-
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workout = workouts![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell", for: indexPath) as! WorkoutCell
         cell.workout = workout

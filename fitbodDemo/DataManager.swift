@@ -12,9 +12,9 @@ class DataManager {
     
     static let sharedInstance: DataManager = DataManager()
     
-    private var workouts: [Workout]?
+    public var workouts: [Workout]?
     private var workoutsSubject: Subject<[Workout]>
-    private var workoutHistory = [WorkoutData]()
+    public var workoutHistory = [WorkoutData]()
     private var dateFormatter = DateFormatter()
     
     private init() {
@@ -22,8 +22,8 @@ class DataManager {
         workoutsSubject = Subject()
     }
     
-    public func loadWorkouts(consumer: @escaping ([Workout]) -> Void) -> Disposable<[Workout]> {
-        return workoutsSubject.subscribe(consumer)
+    public func loadWorkouts(consumer: @escaping ([Workout]) -> Void, error: @escaping (Error)->Void) -> Disposable<[Workout]> {
+        return workoutsSubject.subscribe(consumer, error)
     }
     
     public func loadWorkoutData(file: String) {
@@ -55,26 +55,30 @@ class DataManager {
                         }
                     })
                     print("created \(workoutHistory.count) workouts data")
-    
+                    
                     
                     workouts = Dictionary(grouping: workoutHistory, by: {(element: WorkoutData) in
                         return element.name
                     }).map({(key, value) in
                         return Workout(name: key, data: value)
                     })
-                    workoutsSubject.publish(newValue: workouts!)
+                    workoutsSubject.publish(workouts!)
                     print("created \(workouts?.count ?? 0) workouts")
                     
                 } catch  {
-                    
+                    workoutsSubject.error(DataError("Error while reading data"))
                 }
             } else {
+                workoutsSubject.error((DataError("Workout asset missing")))
                 print("WorkoutData asset missing")
             }
+        } else {
+            workoutsSubject.error(DataError("Workout asset missing"))
+            print("WorkoutData asset missing")
         }
     }
     
-    fileprivate func parseWorkoutSet(textData: String) -> WorkoutSet? {
+    public func parseWorkoutSet(textData: String) -> WorkoutSet? {
         let data = textData.split(separator: ",")
         guard data.count == 5 else {
             print("workout entry incomplete or not parseable")
@@ -94,5 +98,11 @@ class DataManager {
         return WorkoutSet(setId: setId, date: date!, name: name, sets: sets!, reps: reps!, weight: weight!)
     }
     
+    class DataError: Error {
+        var message: String
+        init(_ message : String) {
+            self.message = message
+        }
+    }
 }
 
