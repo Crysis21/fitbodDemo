@@ -14,7 +14,9 @@ class Workout {
     
     init(name: String, data: [WorkoutData]) {
         self.name=name
-        self.data=data
+        self.data=data.sorted {
+            return $0.date < $1.date
+        }
     }
     
     init() {
@@ -23,7 +25,7 @@ class Workout {
     
     var workoutOneRepMax: Int {
         get {
-            return Int(data?.last?.averageOneMaxRep ?? 0)
+            return Int((data?.last?.averageOneMaxRep)!) / 5 * 5 
         }
     }
 }

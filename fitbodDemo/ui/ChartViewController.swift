@@ -25,13 +25,13 @@ class ChartViewController: UIViewController {
         self.oneMaxRep.text = "\(workout?.workoutOneRepMax ?? 0)"
         
         //MARK: prepare chartview UI
-        chartView.dragEnabled = false
+        chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
-        chartView.pinchZoomEnabled = false
+        chartView.pinchZoomEnabled = true
         chartView.drawGridBackgroundEnabled = false
         chartView.highlightPerDragEnabled = false
         chartView.scaleYEnabled = false
-        chartView.scaleXEnabled = false
+        chartView.scaleXEnabled = true
         
         //xAxis
         let xAxis = chartView.xAxis
@@ -40,7 +40,7 @@ class ChartViewController: UIViewController {
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
         xAxis.drawLimitLinesBehindDataEnabled = false
-        xAxis.avoidFirstLastClippingEnabled = false
+        xAxis.avoidFirstLastClippingEnabled = true
         xAxis.granularity = 1.0
         xAxis.spaceMin = xAxis.granularity / 2
         xAxis.spaceMax = xAxis.granularity / 2
@@ -52,6 +52,7 @@ class ChartViewController: UIViewController {
         rightAxis.granularityEnabled = false
         rightAxis.drawAxisLineEnabled=false
         rightAxis.axisMinimum = 0
+        rightAxis.setLabelCount(2, force: true)
         chartView.leftAxis.enabled = false
         chartView.chartDescription?.enabled=false
         chartView.legend.enabled=false
@@ -60,7 +61,7 @@ class ChartViewController: UIViewController {
         var chartEntries = [ChartDataEntry] ()
         for i in 0 ..< (workout?.data?.count)! {
             let stat = workout?.data?[i]
-            chartEntries.append(ChartDataEntry(x: Double(i), y: (stat?.averageOneMaxRep)!))
+            chartEntries.append(ChartDataEntry(x: Double(i), y: Double((stat?.averageOneMaxRep)!)))
         }
         let dataSet = LineChartDataSet(values: chartEntries, label: "One Max Rep")
         let lineData = LineChartData(dataSet: dataSet)
@@ -91,11 +92,23 @@ class ChartViewController: UIViewController {
         public init(dates: [Date]) {
             self.dates = dates
             self.dateFormatter = DateFormatter()
-            self.dateFormatter.dateFormat = "MMM d"
         }
         
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            return self.dateFormatter.string(from: dates![Int(value)])
+            let position = Int(value)
+            if value != axis?.entries.first! && value != axis?.entries.last! {
+                let oldPosition = Int((axis?.entries[(axis?.entries.index(of: value))! - 1])!)
+                let m1 =  NSCalendar.current.dateComponents([.month], from: dates![oldPosition]).month
+                let m2 =  NSCalendar.current.dateComponents([.month], from: dates![position]).month
+                if m1 == m2 {
+                    self.dateFormatter.dateFormat = "d"
+                } else {
+                    self.dateFormatter.dateFormat = "MMM d"
+                }
+            } else {
+                self.dateFormatter.dateFormat = "MMM d"
+            }
+            return self.dateFormatter.string(from: dates![position])
         }
     }
 }
